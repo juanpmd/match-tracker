@@ -1,0 +1,124 @@
+.card {
+  background: var(--background);
+  border: 1px solid rgba(128, 128, 128, 0.15);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.media {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: rgba(128, 128, 128, 0.1);
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mediaCount {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.content {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.name {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.rating {
+  display: flex;
+  align-items: baseline;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  padding: 6px 12px;
+  border-radius: 20px;
+  color: white;
+}
+
+.ratingValue {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.ratingMax {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  margin-left: 2px;
+}
+
+.contacts {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: rgba(128, 128, 128, 0.1);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.contactLink:hover {
+  background: rgba(128, 128, 128, 0.2);
+}
+
+.contactIcon {
+  font-size: 1rem;
+}
+
+.notes {
+  margin: 0;
+  padding: 12px;
+  background: rgba(128, 128, 128, 0.05);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--foreground);
+  opacity: 0.8;
+}
+
+.footer {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+.date {
+  font-size: 0.75rem;
+  color: var(--foreground);
+  opacity: 0.5;
+}
