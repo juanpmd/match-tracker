@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { createMatch } from '@/lib/actions';
-import styles from './MatchForm.module.css';
+import styles from './match-form.module.css';
 
 interface MatchFormProps {
   onSuccess: () => void;
@@ -10,73 +10,73 @@ interface MatchFormProps {
 
 export default function MatchForm({ onSuccess }: MatchFormProps) {
   const [loading, setLoading] = useState(false);
-  const [images, setImages] = useState<string[]>([]);
-  const [videos, setVideos] = useState<string[]>([]);
-  const [uploading, setUploading] = useState(false);
+  // const [images, setImages] = useState<string[]>([]);
+  // const [videos, setVideos] = useState<string[]>([]);
+  // const [uploading, setUploading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleFileUpload = async (files: FileList | null, type: 'image' | 'video') => {
-    if (!files || files.length === 0) return;
-    
-    setUploading(true);
-    const uploadedUrls: string[] = [];
+  // const handleFileUpload = async (files: FileList | null, type: 'image' | 'video') => {
+  //   if (!files || files.length === 0) return;
 
-    for (const file of Array.from(files)) {
-      const formData = new FormData();
-      formData.append('file', file);
+  //   setUploading(true);
+  //   const uploadedUrls: string[] = [];
 
-      try {
-        const response = await fetch('/api/upload', {
-          method: 'POST',
-          body: formData,
-        });
+  //   for (const file of Array.from(files)) {
+  //     const formData = new FormData();
+  //     formData.append('file', file);
 
-        if (response.ok) {
-          const data = await response.json();
-          uploadedUrls.push(data.url);
-        }
-      } catch (error) {
-        console.error('Upload failed:', error);
-      }
-    }
+  //     try {
+  //       const response = await fetch('/api/upload', {
+  //         method: 'POST',
+  //         body: formData,
+  //       });
 
-    if (type === 'image') {
-      setImages((prev) => [...prev, ...uploadedUrls]);
-    } else {
-      setVideos((prev) => [...prev, ...uploadedUrls]);
-    }
-    
-    setUploading(false);
-  };
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         uploadedUrls.push(data.url);
+  //       }
+  //     } catch (error) {
+  //       console.error('Upload failed:', error);
+  //     }
+  //   }
 
-  const removeMedia = (url: string, type: 'image' | 'video') => {
-    if (type === 'image') {
-      setImages((prev) => prev.filter((u) => u !== url));
-    } else {
-      setVideos((prev) => prev.filter((u) => u !== url));
-    }
-  };
+  //   if (type === 'image') {
+  //     setImages((prev) => [...prev, ...uploadedUrls]);
+  //   } else {
+  //     setVideos((prev) => [...prev, ...uploadedUrls]);
+  //   }
+
+  //   setUploading(false);
+  // };
+
+  // const removeMedia = (url: string, type: 'image' | 'video') => {
+  //   if (type === 'image') {
+  //     setImages((prev) => prev.filter((u) => u !== url));
+  //   } else {
+  //     setVideos((prev) => prev.filter((u) => u !== url));
+  //   }
+  // };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
     const formData = new FormData(e.currentTarget);
-    
+
     try {
       await createMatch({
-        personName: formData.get('personName') as string,
-        whatsappUrl: formData.get('whatsappUrl') as string || null,
-        telegramUrl: formData.get('telegramUrl') as string || null,
-        rating: parseInt(formData.get('rating') as string) || 5,
-        notes: formData.get('notes') as string || null,
-        images,
-        videos,
+        name: formData.get('name') as string,
+        // whatsappUrl: formData.get('whatsappUrl') as string || null,
+        // telegramUrl: formData.get('telegramUrl') as string || null,
+        // rating: parseInt(formData.get('rating') as string) || 5,
+        // notes: formData.get('notes') as string || null,
+        // images,
+        // videos,
       });
 
       formRef.current?.reset();
-      setImages([]);
-      setVideos([]);
+      // setImages([]);
+      // setVideos([]);
       onSuccess();
     } catch (error) {
       console.error('Failed to create match:', error);
@@ -88,17 +88,17 @@ export default function MatchForm({ onSuccess }: MatchFormProps) {
   return (
     <form ref={formRef} onSubmit={handleSubmit} className={styles.form}>
       <div className={styles.field}>
-        <label htmlFor="personName">Person Name *</label>
+        <label htmlFor="name">Person Name *</label>
         <input
           type="text"
-          id="personName"
-          name="personName"
+          id="name"
+          name="name"
           required
           placeholder="Enter name"
         />
       </div>
 
-      <div className={styles.row}>
+      {/* <div className={styles.row}>
         <div className={styles.field}>
           <label htmlFor="whatsappUrl">WhatsApp</label>
           <input
@@ -117,9 +117,9 @@ export default function MatchForm({ onSuccess }: MatchFormProps) {
             placeholder="Username or URL"
           />
         </div>
-      </div>
+      </div> */}
 
-      <div className={styles.field}>
+      {/* <div className={styles.field}>
         <label htmlFor="rating">Rating (1-10)</label>
         <input
           type="range"
@@ -135,9 +135,9 @@ export default function MatchForm({ onSuccess }: MatchFormProps) {
           <span>5</span>
           <span>10</span>
         </div>
-      </div>
+      </div> */}
 
-      <div className={styles.field}>
+      {/* <div className={styles.field}>
         <label htmlFor="notes">Notes</label>
         <textarea
           id="notes"
@@ -145,9 +145,9 @@ export default function MatchForm({ onSuccess }: MatchFormProps) {
           rows={3}
           placeholder="Add any notes or comments..."
         />
-      </div>
+      </div> */}
 
-      <div className={styles.field}>
+      {/* <div className={styles.field}>
         <label>Images</label>
         <input
           type="file"
@@ -172,9 +172,9 @@ export default function MatchForm({ onSuccess }: MatchFormProps) {
             ))}
           </div>
         )}
-      </div>
+      </div> */}
 
-      <div className={styles.field}>
+      {/* <div className={styles.field}>
         <label>Videos</label>
         <input
           type="file"
@@ -199,13 +199,14 @@ export default function MatchForm({ onSuccess }: MatchFormProps) {
             ))}
           </div>
         )}
-      </div>
+      </div> */}
 
-      {uploading && <p className={styles.uploading}>Uploading files...</p>}
+      {/* {uploading && <p className={styles.uploading}>Uploading files...</p>} */}
 
       <button
         type="submit"
-        disabled={loading || uploading}
+        disabled={loading}
+        // disabled={loading || uploading}
         className={styles.submitButton}
       >
         {loading ? 'Creating...' : 'Create Match'}

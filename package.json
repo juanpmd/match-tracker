@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 4025",
     "build": "next build",
-    "start": "next start",
-    "db:generate": "drizzle-kit generate",
-    "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio"
+    "start": "next start --port 4025"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
@@ -24,13 +21,5 @@
     "@types/react-dom": "^19.2.3",
     "drizzle-kit": "^0.31.8",
     "typescript": "^5.9.3"
-  },
-  "ignoreScripts": [
-    "sharp",
-    "unrs-resolver"
-  ],
-  "trustedDependencies": [
-    "sharp",
-    "unrs-resolver"
-  ]
+  }
 }

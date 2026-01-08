@@ -1,5 +1,5 @@
 import { getMatches } from '@/lib/actions';
-import HomePage from './components/HomePage/HomePage';
+import HomePage from '@/components/HomePage/HomePage';
 
 export const dynamic = 'force-dynamic';
 

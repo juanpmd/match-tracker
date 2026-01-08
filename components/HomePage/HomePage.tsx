@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { Match } from '@/lib/db/schema';
-import Modal from '../Modal/Modal';
-import MatchForm from '../MatchForm/MatchForm';
-import MatchCard from '../MatchCard/MatchCard';
+import Modal from '@/components/Modal/Modal';
+import MatchForm from '@/components/match-form/match-form';
+import MatchCard from '@/components/match-card/match-card';
 import styles from './HomePage.module.css';
 
 interface HomePageProps {

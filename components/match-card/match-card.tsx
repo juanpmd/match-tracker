@@ -1,5 +1,5 @@
 import { Match } from '@/lib/db/schema';
-import styles from './MatchCard.module.css';
+import styles from './match-card.module.css';
 
 interface MatchCardProps {
   match: Match;
@@ -15,7 +15,7 @@ export default function MatchCard({ match }: MatchCardProps) {
       {hasMedia && (
         <div className={styles.media}>
           {images.length > 0 && (
-            <img src={images[0]} alt={match.personName} className={styles.mainImage} />
+            <img src={images[0]} alt={match.name} className={styles.mainImage} />
           )}
           {images.length === 0 && videos.length > 0 && (
             <video src={videos[0]} className={styles.mainImage} controls />
@@ -25,17 +25,17 @@ export default function MatchCard({ match }: MatchCardProps) {
           )}
         </div>
       )}
-      
+
       <div className={styles.content}>
         <div className={styles.header}>
-          <h3 className={styles.name}>{match.personName}</h3>
-          <div className={styles.rating}>
+          <h3 className={styles.name}>{match.name}</h3>
+          {/* <div className={styles.rating}>
             <span className={styles.ratingValue}>{match.rating}</span>
             <span className={styles.ratingMax}>/10</span>
-          </div>
+          </div> */}
         </div>
 
-        <div className={styles.contacts}>
+        {/* <div className={styles.contacts}>
           {match.whatsappUrl && (
             <a
               href={match.whatsappUrl.startsWith('http') ? match.whatsappUrl : `https://wa.me/${match.whatsappUrl}`}
@@ -58,11 +58,11 @@ export default function MatchCard({ match }: MatchCardProps) {
               Telegram
             </a>
           )}
-        </div>
+        </div> */}
 
-        {match.notes && (
+        {/* {match.notes && (
           <p className={styles.notes}>{match.notes}</p>
-        )}
+        )} */}
 
         <div className={styles.footer}>
           <span className={styles.date}>
